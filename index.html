@@ -1,0 +1,861 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Felices 16 💗</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff0f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           CORAZONES FLOTANDO
+        ========================= */
+
+        .corazon {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: flotar 8s linear infinite;
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .c1 { left: 10%; animation-delay: 1s; }
+        .c2 { left: 30%; animation-delay: 3s; }
+        .c3 { left: 55%; animation-delay: 0s; }
+        .c4 { left: 75%; animation-delay: 4s; }
+        .c5 { left: 90%; animation-delay: 2s; }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(
+                135deg,
+                #ffd6e7,
+                #fff0f6,
+                #e8d9ff
+            );
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 85px;
+            color: #d63384;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px white;
+            animation: aparecer 1.5s ease;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            font-weight: normal;
+            color: #555;
+            animation: aparecer 2s ease;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 15px 30px;
+            background: #d63384;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            transform: scale(1.08);
+            background: #b52b6f;
+        }
+
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        section {
+            padding: 90px 10%;
+            text-align: center;
+            position: relative;
+        }
+
+        section h2 {
+            font-size: 45px;
+            color: #d63384;
+            margin-bottom: 25px;
+        }
+
+        section p {
+            font-size: 20px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           CARTA
+        ========================= */
+
+        .carta {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 45px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: 0.4s;
+        }
+
+        .carta:hover {
+            transform: translateY(-5px);
+        }
+
+        .carta p {
+            font-size: 19px;
+        }
+
+
+        /* =========================
+           FOTOS
+        ========================= */
+
+        .galeria {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .foto {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: 0.4s;
+        }
+
+        .foto:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .foto:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .foto:hover {
+            transform: scale(1.07) rotate(0deg);
+            z-index: 2;
+        }
+
+
+        /* =========================
+           16 COSAS
+        ========================= */
+
+        .cosas {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cosa {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 7px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .cosa:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(214,51,132,0.2);
+        }
+
+        .numero {
+            font-size: 30px;
+            font-weight: bold;
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           LINEA DEL TIEMPO
+        ========================= */
+
+        .timeline {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: left;
+        }
+
+        .evento {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #d63384;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .evento:hover {
+            transform: translateX(10px);
+        }
+
+        .evento h3 {
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           MUSICA
+        ========================= */
+
+        .musica {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .disco {
+            font-size: 70px;
+            animation: girar 4s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes girar {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+           LINKS
+        ========================= */
+
+        .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .link {
+            text-decoration: none;
+            color: white;
+            background: #d63384;
+            padding: 15px 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .link:hover {
+            transform: translateY(-5px);
+        }
+
+
+        /* =========================
+           REGALO FINAL
+        ========================= */
+
+        .regalo {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .caja {
+            font-size: 100px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .caja:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        #mensajeFinal {
+            display: none;
+            margin-top: 30px;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: aparecer 1s ease;
+        }
+
+        #mensajeFinal h3 {
+            color: #d63384;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #d63384;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           ANIMACIONES
+        ========================= */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+
+            section h2 {
+                font-size: 35px;
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+
+            .foto {
+                height: 350px;
+            }
+
+            .cosas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .carta {
+                padding: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- CORAZONES -->
+
+    <div class="corazon c1">💗</div>
+    <div class="corazon c2">💕</div>
+    <div class="corazon c3">💖</div>
+    <div class="corazon c4">💗</div>
+    <div class="corazon c5">💕</div>
+
+
+    <!-- PORTADA -->
+
+    <header class="hero">
+
+        <h1>
+            para la mejor amiga del mundo
+            <br>
+            FELICES 16
+        </h1>
+
+        <h2>
+            12/10/2026
+        </h2>
+
+        <a href="#carta" class="boton">
+            sorpresita 💌
+        </a>
+
+    </header>
+
+
+    <!-- CARTA -->
+
+    <section id="carta">
+
+        <h2>para mi bb 💗</h2>
+
+        <div class="carta">
+
+            <p>
+                feliz cumple mi almita
+                <br><br>
+
+                bueno, hoy es 2 de octubre y desde hace un
+                par de dias estuve pensando en que regalarte
+                y basandome en mis amplios conocimientos en
+                la informatica (lo hice con chat gpt y un poco
+                de lo que aprendi el año pasado), se me ocurrio
+                hacerte este regalo que me parecio bastante
+                original y lindo.
+                <br><br>
+
+                espero que pases un hermoso cumpleaños
+                porque solo cumplis 16 una vez en la vida
+                dea. te amo mi pionono espero que te guste
+                y te parezca un regalo super original y el
+                mejor que te hicieron en la vida. 💗
+                <br><br>
+
+                con mucho amor, tu mejor mejor amiga
+                (y un poco de chatgpt)
+                <br><br>
+
+                te amo💗
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOTOS -->
+
+    <section id="fotos">
+
+        <h2>fotitos nuestras por que somos hermosas </h2>
+
+        <p>
+            📸📸📸
+        </p>
+
+        <div class="galeria">
+
+            <img src="b1c8314a-f7f8-4c3c-b934-9182bf9b7b89.jpg" class="foto" alt="Foto nuestra">
+
+            <img src="a0f5fcff-188e-42df-9cec-d0d5b9b330b6.jpg" class="foto" alt="Foto nuestra">
+
+            <img src="be24bba7-ac95-4b06-93be-5b3c1601e42d.jpg" class="foto" alt="Foto nuestra">
+
+            <img src="542877ec-687a-4599-8878-3cc30c6dea8c.jpg" class="foto" alt="Foto nuestra">
+
+            <img src="7dfce296-68d1-40a2-9c93-02de3d632583.jpg" class="foto" alt="Foto nuestra">
+
+            <img src="01a93ceb-cf08-4598-bc03-3d2168cc5354.jpg" class="foto" alt="Foto nuestra">
+
+        </div>
+
+    </section>
+
+
+    <!-- 16 COSAS -->
+
+    <section>
+
+        <h2>16 cosas que amo de vos</h2>
+
+        <p>
+            creo que te podria decir mas de 100, pero cumplis 16 no 100
+        </p>
+
+        <div class="cosas">
+
+            <div class="cosa">
+                <div class="numero">01</div>
+                lo graciosa que sos mi amor
+            </div>
+
+            <div class="cosa">
+                <div class="numero">02</div>
+                los codigos que tenes conmigo y lo leal que sos
+            </div>
+
+            <div class="cosa">
+                <div class="numero">03</div>
+                lo segura que me hace sentir hablar con vos, sea contarte una pelotudez o algo muy privado
+            </div>
+
+            <div class="cosa">
+                <div class="numero">04</div>
+                tu super memoria y la atencion que me das
+            </div>
+
+            <div class="cosa">
+                <div class="numero">05</div>
+                cuando te agarra un ataque de amor por 5 segundos y me abrazas o me mordes (no me gusta la parte de morder pero ya me acostumbre)
+            </div>
+
+            <div class="cosa">
+                <div class="numero">06</div>
+                Saber que nunca nos vamos a pelear porque sé que sos incapaz de hacer algo a propósito para hacerme sentir mal.
+
+            </div>
+
+            <div class="cosa">
+                <div class="numero">07</div>
+                todo lo que me conoces y yo a vos
+            </div>
+
+            <div class="cosa">
+                <div class="numero">08</div>
+                tus opiniones sinceras 
+            </div>
+
+            <div class="cosa">
+                <div class="numero">09</div>
+                lo sensible que sos mi bb te amo
+            </div>
+
+            <div class="cosa">
+                <div class="numero">10</div>
+                que estes dispuesta a mejorar siempre asi podes estar bien con todos los que te quieren
+            </div>
+
+            <div class="cosa">
+                <div class="numero">11</div>
+                que te abras conmigo y me cuentes como te sentis
+            </div>
+
+            <div class="cosa">
+                <div class="numero">12</div>
+                lo madura que sos 
+            </div>
+
+            <div class="cosa">
+                <div class="numero">13</div>
+                tu objetividad, que siempre quieras ver los dos lados
+            </div>
+
+            <div class="cosa">
+                <div class="numero">14</div>
+                tu forma de consolarme y aconsejarme
+            </div>
+
+            <div class="cosa">
+                <div class="numero">15</div>
+                que yo sea tu mejor amiga dea
+            </div>
+
+            <div class="cosa">
+                <div class="numero">16</div>
+                amo todo de vos chocolatito🥰😘
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTORIA -->
+
+    <section>
+
+        <h2>sobre nuestra amistad</h2>
+
+        <div class="timeline">
+
+            <div class="evento">
+                <h3>los principios</h3>
+                <p>
+                    emm nose que poner aca porque tenia 6 años.
+                    lo unico que me acuero es de que nos juntabamos mucho y estabamos mucho con delfi
+                </p>
+            </div>
+
+            <div class="evento">
+                <h3>cuando empezamos a ser mas amigas...</h3>
+                <p>
+                    2024 fue muy top, pero creo que una de las mejores cosas fue empezar nuestra racha de hablar todos los dias, aun que no entiendo como de la nada empezamos a hablar tanto pero bueno mejor
+                </p>
+            </div>
+
+            <div class="evento">
+                <h3>2025 y 2026</h3>
+                <p>
+                    aparte de todos los momentos lindos que pasamos estos ultimos dos años, siempre fuiste un gran apoyo para mi todas las veces que estuve mal y hasta sos mi motivacion para ir al colegio todos los idas
+                </p>
+            </div>
+
+            <div class="evento">
+                <h3>y hoy</h3>
+                <p>
+                    creo que es nuestro mejor momento de amistad porque crecimos, aprendimos y mejoramos juntas. espero que no decaiga, te amooooo
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CANCIÓN -->
+
+    <section>
+
+        <h2>canciones que me hacen acordar a vos</h2>
+
+        <div class="musica">
+
+            <div class="disco">
+                💿
+            </div>
+
+            <h3 style="margin-top:20px;">
+                abri la playlist
+            </h3>
+
+            <p style="margin-top:10px;">
+                no puedo escuchar estas canciones sin extrañarte
+            </p>
+
+            <a
+                href="https://open.spotify.com/playlist/2P4LCXOOwzPJSbm6lQE98u?si=d89666a4123c482f&pt=8e58e7e1e75b3cbbd7fbab9efc7a3436"
+                target="_blank"
+                class="boton"
+            >
+                abrir
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- LINKS -->
+
+    <section>
+
+        <h2>jejeje</h2>
+
+        <div class="links">
+
+            
+
+            <a
+                href="#16COSAS"
+                target="_blank"
+                class="link"
+            >
+                volver al principio
+            </a>
+
+            <a
+                href="#carta"
+                class="link"
+            >
+                volver a la carta 
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- REGALO FINAL -->
+
+    <section>
+
+        <div class="regalo">
+
+            <h2>
+                y todavía falta la ultima sorpresa
+            </h2>
+
+            <p>
+                tocá el regalo 🎁
+            </p>
+
+            <div
+                class="caja"
+                onclick="abrirRegalo()"
+            >
+                🎁
+            </div>
+
+            <div id="mensajeFinal">
+
+                <h3>
+                    FELICES 16 BB
+                </h3>
+
+                <p>
+                    Ahora si te doy tu regalo real porque aunq haya estado mas de dos dias haciendo esto, tenia q darte tu regalo
+                    <br><br>
+
+                    sun que ser mi amiga siempre va a ser un regalo, DE NADA
+                    <br><br>
+
+                    te amo muchísimo💗
+                    <br><br>
+
+                    Y sí... probablemente esta página
+                    la haya hecho 70% ChatGPT.
+                    😂 (esto lo puso el, pobre quiere creditos)
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        para mi mejor amiga, mi hermana, mi bff
+
+        <br><br>
+
+        felices 16 almi 
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function abrirRegalo() {
+
+            const mensaje = document.getElementById("mensajeFinal");
+
+            mensaje.style.display = "block";
+
+            lanzarConfeti();
+
+        }
+
+
+        function lanzarConfeti() {
+
+            for (let i = 0; i < 80; i++) {
+
+                const confeti = document.createElement("div");
+
+                confeti.innerHTML = "💗";
+
+                confeti.style.position = "fixed";
+                confeti.style.left = Math.random() * 100 + "vw";
+                confeti.style.top = "-20px";
+                confeti.style.fontSize = (Math.random() * 20 + 15) + "px";
+                confeti.style.zIndex = "9999";
+                confeti.style.pointerEvents = "none";
+
+                document.body.appendChild(confeti);
+
+                confeti.animate(
+                    [
+                        {
+                            transform: "translateY(0) rotate(0deg)",
+                            opacity: 1
+                        },
+                        {
+                            transform:
+                            `translateY(110vh) rotate(${Math.random() * 720}deg)`,
+                            opacity: 0
+                        }
+                    ],
+                    {
+                        duration: Math.random() * 2500 + 2000,
+                        easing: "ease-out"
+                    }
+                );
+
+                setTimeout(() => {
+                    confeti.remove();
+                }, 5000);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
